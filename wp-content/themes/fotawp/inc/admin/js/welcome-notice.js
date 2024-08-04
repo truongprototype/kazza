@@ -8,6 +8,7 @@
 
     var activationData = {
       action: "fotawp_install_and_activate_plugins",
+      nonce: fotawp_localize.nonce,
     };
     $.post(fotawp_localize.ajax_url, activationData, function (response) {
       var checkJSON = /{.*}/; // Regular expression to match the JSON portion
@@ -49,6 +50,7 @@
       dataType: "json", // Expecting JSON response
       data: {
         action: "fotawp_rplugin_activation",
+        nonce: fotawp_localize.nonce,
         get_slug: plugin_slug,
         get_filename: pluign_filename,
         // additional data if needed
@@ -66,14 +68,6 @@
         // Handle error
         $("#response-container").text("An error occurred.");
         console.log(xhr.responseText);
-      },
-    });
-  });
-  $("#fotawp-dismiss-notice").on("click", ".notice-dismiss", function () {
-    $.ajax({
-      url: ajaxurl,
-      data: {
-        action: "fotawp_dismissble_notice",
       },
     });
   });

@@ -5,7 +5,7 @@ Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-me
 Requires at least: 5.9
 Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,9 @@ FotaWP is a lightweight, block-based, multipurpose WordPress theme designed to b
 FotaWP includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 1.4.2 - Aug 07, 2024 =
+* Update:Minor security improvement patch
+
 = 1.4.1 - July 25, 2024 =
 * Tested up to 6.6
 

@@ -74,6 +74,10 @@ function fotawp_admin_style()
 
         wp_enqueue_style('fotawp-admin-style', get_template_directory_uri() . '/assets/css/admin-style.css', array(), FOTAWP_VERSION, 'all');
         wp_enqueue_script('fotawp-admin-scripts', get_template_directory_uri() . '/assets/js/admin-scripts.js', array(), FOTAWP_VERSION, true);
+        wp_localize_script('fotawp-admin-scripts', 'fotawp_admin_localize', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('fotawp_admin_nonce')
+        ));
         wp_enqueue_script('fotawp-welcome-notice', get_template_directory_uri() . '/inc/admin/js/welcome-notice.js', array('jquery'), FOTAWP_VERSION, true);
         if (class_exists('Cozythemes_Demo_Importer')) {
             $activation_redirect_url = admin_url('themes.php?page=advanced-import');
@@ -82,6 +86,7 @@ function fotawp_admin_style()
         }
         wp_localize_script('fotawp-welcome-notice', 'fotawp_localize', array(
             'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('fotawp_welcome_nonce'),
             'redirect_url' => $activation_redirect_url
         ));
     }
