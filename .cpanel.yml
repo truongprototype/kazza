@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/kazzacom66b0/int.kazza.com.vn/
+    - /bin/cp -R wp-content/themes $DEPLOYPATH
+    - /bin/cp -R wp-content/plugins $DEPLOYPATH
