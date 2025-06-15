@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0.36
+    platform: linux/arm64/v8
+    container_name: kazza-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: kazza
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  wordpress:
+    build: .
+    container_name: kazza-wordpress
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_DB_NAME: kazza
+    volumes:
+      - ./:/var/www/html
+      - ./wp-content/uploads:/var/www/html/wp-content/uploads
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    platform: linux/arm64/v8
+    container_name: kazza-phpmyadmin
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    volumes:
+      - ./phpmyadmin_data:/sessions
+
+volumes:
+  mysql_data:
+  phpmyadmin_data: 

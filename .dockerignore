@@ -1,0 +1,16 @@
+# Ignore everything except WordPress core and config
+.git
+.gitignore
+.dockerignore
+Dockerfile
+docker-compose.yml
+wp-content/uploads/*
+wp-content/ai1wm-backups/*
+wp-content/upgrade/*
+wp-content/upgrade-temp-backup/*
+*.log
+*.md
+*.yml
+*.yaml
+node_modules
+vendor 
